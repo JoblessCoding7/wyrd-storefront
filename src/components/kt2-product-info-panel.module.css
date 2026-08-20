@@ -1,0 +1,112 @@
+@font-face {
+  font-family: "Zalando Sans Expanded";
+  src: url("/fonts/zalando-sans-expanded.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 200 900;
+  font-display: swap;
+}
+
+.panel {
+  position: absolute;
+  right: min(1.6875vw, 2.7955vh);
+  bottom: min(6.2257vw, 10.3135vh);
+  z-index: 25;
+  display: grid;
+  width: min(22.3958vw, 37.1009vh);
+  height: min(13.9826vw, 23.1636vh);
+  box-sizing: border-box;
+  grid-template-rows:
+    min(4.8076vw, 7.9643vh)
+    min(2.9917vw, 4.9551vh)
+    min(1.4958vw, 2.478vh);
+  row-gap: min(1.4583vw, 2.4159vh);
+  padding: min(0.7813vw, 1.2942vh) min(1.0417vw, 1.7256vh);
+  color: black;
+  border: min(0.1042vw, 0.1726vh) solid black;
+  border-radius: min(0.7292vw, 1.208vh);
+  background: white;
+  box-shadow: 0 min(0.2083vw, 0.3451vh) min(0.2083vw, 0.3451vh)
+    rgb(0 0 0 / 25%);
+  font-family: "Zalando Sans Expanded", Arial, Helvetica, sans-serif;
+  pointer-events: none;
+}
+
+.title,
+.description,
+.price {
+  margin: 0;
+}
+
+.title {
+  overflow: hidden;
+  font-size: min(1.1979vw, 1.9845vh);
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  line-height: min(1.4583vw, 2.4159vh);
+  text-transform: uppercase;
+  white-space: pre-line;
+}
+
+.description {
+  overflow: hidden;
+  font-size: min(0.7292vw, 1.208vh);
+  font-weight: 500;
+  letter-spacing: 0;
+  line-height: min(0.8854vw, 1.4668vh);
+}
+
+.purchaseRow {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.price {
+  font-size: min(1.1979vw, 1.9845vh);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: min(1.4583vw, 2.4159vh);
+}
+
+.addToCart {
+  width: min(6.276vw, 10.397vh);
+  height: min(1.4176vw, 2.3485vh);
+  margin: 0;
+  padding: 0;
+  color: black;
+  border: min(0.0781vw, 0.1294vh) solid black;
+  border-radius: 999px;
+  background: white;
+  font: inherit;
+  font-size: min(0.7292vw, 1.208vh);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: min(0.8854vw, 1.4668vh);
+  cursor: pointer;
+  pointer-events: auto;
+  transition:
+    color 120ms ease-out,
+    background-color 120ms ease-out;
+}
+
+.addToCart:hover {
+  color: white;
+  background: black;
+}
+
+.addToCart:focus-visible {
+  outline: min(0.1042vw, 0.1726vh) solid black;
+  outline-offset: min(0.1563vw, 0.2588vh);
+}
+
+.addToCart:active {
+  color: white;
+  background: #333;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .addToCart {
+    transition: none;
+  }
+}
