@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 
 import { Kt2ProductStage } from "@/components/kt2-product-stage";
+import { Kt2ProductExploration } from "@/components/kt2-product-exploration";
 import { WyrdLanding } from "@/components/wyrd-landing";
 
 import styles from "./storefront-experience.module.css";
@@ -15,9 +16,12 @@ type TransitionPhase = "idle" | "covering" | "revealing";
 
 export function StorefrontExperience() {
   const [isProductStageVisible, setIsProductStageVisible] = useState(false);
+  const [isProductExplorationVisible, setIsProductExplorationVisible] =
+    useState(false);
   const [transitionPhase, setTransitionPhase] =
     useState<TransitionPhase>("idle");
   const transitionStartedRef = useRef(false);
+  const explorationTransitionStartedRef = useRef(false);
   const transitionTimersRef = useRef<number[]>([]);
 
   const showProductStage = useCallback(() => {
@@ -48,6 +52,34 @@ export function StorefrontExperience() {
     transitionTimersRef.current.push(coverTimer);
   }, []);
 
+  const showProductExploration = useCallback(() => {
+    if (explorationTransitionStartedRef.current) {
+      return;
+    }
+
+    explorationTransitionStartedRef.current = true;
+
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      setIsProductExplorationVisible(true);
+      return;
+    }
+
+    setTransitionPhase("covering");
+
+    const coverTimer = window.setTimeout(() => {
+      setIsProductExplorationVisible(true);
+      setTransitionPhase("revealing");
+
+      const revealTimer = window.setTimeout(() => {
+        setTransitionPhase("idle");
+      }, revealDurationMs);
+
+      transitionTimersRef.current.push(revealTimer);
+    }, coverDurationMs);
+
+    transitionTimersRef.current.push(coverTimer);
+  }, []);
+
   useEffect(() => {
     const transitionTimers = transitionTimersRef.current;
     const timer = window.setTimeout(showProductStage, landingDurationMs);
@@ -60,8 +92,10 @@ export function StorefrontExperience() {
 
   return (
     <div className={styles.experience}>
-      {isProductStageVisible ? (
-        <Kt2ProductStage />
+      {isProductExplorationVisible ? (
+        <Kt2ProductExploration />
+      ) : isProductStageVisible ? (
+        <Kt2ProductStage onProductActivate={showProductExploration} />
       ) : (
         <WyrdLanding onEnter={showProductStage} />
       )}

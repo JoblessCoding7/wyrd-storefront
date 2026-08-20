@@ -12,7 +12,11 @@ import { WyrdFooter } from "@/components/wyrd-footer";
 
 import styles from "./kt2-product-stage.module.css";
 
-export function Kt2ProductStage() {
+type Kt2ProductStageProps = {
+  onProductActivate: () => void;
+};
+
+export function Kt2ProductStage({ onProductActivate }: Kt2ProductStageProps) {
   const productArtRef = useRef<HTMLDivElement>(null);
   const cursorPromptRef = useRef<HTMLDivElement>(null);
   const animationFrameRef = useRef<number | null>(null);
@@ -118,6 +122,7 @@ export function Kt2ProductStage() {
         onPointerMove={handlePointerMove}
         onPointerLeave={handlePointerLeave}
         onBlur={handlePointerLeave}
+        onClick={onProductActivate}
       >
         <div ref={productArtRef} className={styles.productArt}>
           <Image
