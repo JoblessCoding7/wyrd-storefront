@@ -21,13 +21,35 @@
   height: auto;
 }
 
-.cart {
+.cartTrigger {
   position: absolute;
   top: 4.3141vh;
   right: 1.6667vw;
   z-index: 10;
   width: min(3.9583vw, 6.5598vh);
-  height: auto;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.cart {
+  display: block;
+  width: 100%;
+  color: white;
+  font-family: "Zalando Sans Expanded", Arial, Helvetica, sans-serif;
+  font-size: min(0.625vw, 1.0354vh);
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  line-height: min(0.7292vw, 1.208vh);
+  text-align: left;
+  white-space: nowrap;
+}
+
+.cartTrigger:focus-visible {
+  outline: 1px solid white;
+  outline-offset: 5px;
 }
 
 .productTrigger {

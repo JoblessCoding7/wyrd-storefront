@@ -8,3 +8,11 @@ body {
   overflow: hidden;
   background: black;
 }
+
+@media (pointer: fine) {
+  *,
+  *::before,
+  *::after {
+    cursor: url("/assets/wyrd-cursor.png") 7 3, auto !important;
+  }
+}

@@ -1,0 +1,326 @@
+@font-face {
+  font-family: "Zalando Sans Expanded";
+  src: url("/fonts/zalando-sans-expanded.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 200 900;
+  font-display: swap;
+}
+
+.layer {
+  --drawer-width: min(33.1849vw, 54.981vh);
+  --footer-height: 5.8042vh;
+
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  color: black;
+  font-family: "Zalando Sans Expanded", Arial, Helvetica, sans-serif;
+  pointer-events: none;
+}
+
+.layer[data-open="true"] {
+  pointer-events: auto;
+}
+
+.backdrop,
+.footerShield {
+  position: absolute;
+  left: 0;
+  width: calc(100% - var(--drawer-width));
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: default;
+}
+
+.backdrop {
+  top: 0;
+  bottom: var(--footer-height);
+  opacity: 0;
+  background: rgb(0 0 0 / 20%);
+  backdrop-filter: blur(20px);
+  transition: opacity 280ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.footerShield {
+  bottom: 0;
+  height: var(--footer-height);
+}
+
+.layer[data-open="true"] .backdrop {
+  opacity: 1;
+}
+
+.drawer {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: var(--footer-height);
+  display: flex;
+  width: var(--drawer-width);
+  box-sizing: border-box;
+  flex-direction: column;
+  overflow: hidden;
+  border-left: min(0.0521vw, 0.0863vh) solid black;
+  background: white;
+  transform: translateX(100%);
+  transition: transform 320ms cubic-bezier(0.65, 0, 0.35, 1);
+  will-change: transform;
+}
+
+.drawer:focus {
+  outline: none;
+}
+
+.layer[data-open="true"] .drawer {
+  transform: translateX(0);
+}
+
+.header {
+  display: flex;
+  height: min(3.8365vw, 6.3546vh);
+  box-sizing: border-box;
+  flex: none;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 min(1.6141vw, 2.6747vh);
+  border-bottom: min(0.1042vw, 0.1726vh) solid black;
+}
+
+.cartTitle,
+.close,
+.productTitle,
+.productPrice,
+.preorder,
+.remove,
+.subtotal p {
+  margin: 0;
+}
+
+.cartTitle,
+.close,
+.productTitle,
+.productPrice,
+.subtotal {
+  letter-spacing: -0.02em;
+}
+
+.cartTitle,
+.close,
+.productTitle {
+  font-size: min(0.7292vw, 1.208vh);
+  font-weight: 900;
+  line-height: min(0.8854vw, 1.4668vh);
+}
+
+.close,
+.remove {
+  padding: 0;
+  color: black;
+  border: 0;
+  background: transparent;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.close {
+  min-width: min(3.1771vw, 5.2632vh);
+  text-align: right;
+}
+
+.items {
+  min-height: 0;
+  flex: 1;
+}
+
+.lineItem {
+  position: relative;
+  height: min(9.6354vw, 15.962vh);
+  margin: min(1.4583vw, 2.4159vh) min(1.6141vw, 2.6747vh) 0;
+}
+
+.productImage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: min(7.5521vw, 12.5108vh);
+  height: auto;
+  user-select: none;
+}
+
+.productTitle {
+  position: absolute;
+  top: min(0.1042vw, 0.1726vh);
+  left: min(8.6198vw, 14.2796vh);
+  width: min(13.9786vw, 23.1579vh);
+  overflow: hidden;
+  text-transform: uppercase;
+  white-space: pre-line;
+}
+
+.productPrice {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: min(4.6875vw, 7.7653vh);
+  font-size: min(0.7292vw, 1.208vh);
+  font-weight: 700;
+  line-height: min(0.8854vw, 1.4668vh);
+  text-align: right;
+}
+
+.preorder {
+  position: absolute;
+  top: min(2.4349vw, 4.0371vh);
+  left: min(8.6198vw, 14.2796vh);
+  font-size: min(0.8333vw, 1.3805vh);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  line-height: min(0.9896vw, 1.6393vh);
+}
+
+.quantity {
+  position: absolute;
+  top: min(5.3646vw, 8.887vh);
+  left: min(8.6198vw, 14.2796vh);
+  display: grid;
+  width: min(5.2083vw, 8.6281vh);
+  height: min(1.6667vw, 2.761vh);
+  box-sizing: border-box;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: center;
+  border: min(0.0781vw, 0.1294vh) solid black;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.quantityButton,
+.quantityValue {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  font-size: min(0.7292vw, 1.208vh);
+  font-weight: 700;
+  line-height: 1;
+}
+
+.quantityButton {
+  margin: 0;
+  padding: 0;
+  color: black;
+  border: 0;
+  background: white;
+  font-family: inherit;
+  cursor: pointer;
+  transition:
+    color 100ms ease-out,
+    background-color 100ms ease-out;
+}
+
+.quantityButton:hover,
+.quantityButton:active {
+  color: white;
+  background: black;
+}
+
+.remove {
+  position: absolute;
+  top: min(6.076vw, 10.069vh);
+  right: 0;
+  font-size: min(0.7292vw, 1.208vh);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  line-height: min(0.8854vw, 1.4668vh);
+  text-decoration: underline;
+  text-underline-offset: 0.08em;
+}
+
+.subtotal {
+  display: flex;
+  height: min(3.5938vw, 5.9534vh);
+  box-sizing: border-box;
+  flex: none;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 min(1.6141vw, 2.6747vh);
+  border-top: min(0.1042vw, 0.1726vh) solid black;
+  font-size: min(0.7292vw, 1.208vh);
+  font-weight: 900;
+  line-height: min(0.8854vw, 1.4668vh);
+}
+
+.subtotalValue {
+  font-size: min(1.1458vw, 1.8973vh);
+  font-weight: 700;
+  line-height: min(1.4063vw, 2.3296vh);
+  text-align: right;
+}
+
+.checkoutArea {
+  display: flex;
+  height: min(6.1849vw, 10.2502vh);
+  box-sizing: border-box;
+  flex: none;
+  align-items: flex-start;
+  padding: min(1.25vw, 2.0708vh) min(1.5109vw, 2.5022vh) 0;
+  border-top: min(0.1042vw, 0.1726vh) solid black;
+}
+
+.checkout {
+  width: 100%;
+  height: min(3.4656vw, 5.7412vh);
+  margin: 0;
+  padding: 0;
+  color: white;
+  border: min(0.1042vw, 0.1726vh) solid black;
+  border-radius: 999px;
+  background: black;
+  font-family: inherit;
+  font-size: min(0.9375vw, 1.5531vh);
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  line-height: min(1.1458vw, 1.8973vh);
+  cursor: pointer;
+  transition: opacity 120ms ease-out;
+}
+
+.checkout:not(:disabled):hover,
+.checkout:not(:disabled):active {
+  opacity: 0.78;
+}
+
+.checkout:disabled {
+  color: #f4f4f4;
+  border-color: #b8b8b8;
+  background: #b8b8b8;
+  opacity: 1;
+}
+
+.close:hover,
+.remove:hover {
+  opacity: 0.58;
+}
+
+.close:focus-visible,
+.quantityButton:focus-visible,
+.remove:focus-visible,
+.checkout:focus-visible {
+  outline: min(0.1042vw, 0.1726vh) solid black;
+  outline-offset: min(0.1563vw, 0.2588vh);
+}
+
+.checkout:focus-visible {
+  outline-color: white;
+  outline-offset: min(-0.2604vw, -0.4314vh);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .backdrop,
+  .drawer,
+  .quantityButton,
+  .checkout {
+    transition: none;
+  }
+}
