@@ -9,11 +9,13 @@ import styles from "./mobile-kt2-product-info-overlay.module.css";
 type MobileKt2ProductInfoOverlayProps = {
   product: ProductInformation;
   onDismiss: () => void;
+  onAddToCart: () => void;
 };
 
 export function MobileKt2ProductInfoOverlay({
   product,
   onDismiss,
+  onAddToCart,
 }: MobileKt2ProductInfoOverlayProps) {
   const panelRef = useRef<HTMLElement>(null);
 
@@ -69,7 +71,11 @@ export function MobileKt2ProductInfoOverlay({
         <p className={styles.description}>{product.description}</p>
         <div className={styles.purchaseRow}>
           <p className={styles.price}>{product.price}</p>
-          <button className={styles.addToCart} type="button">
+          <button
+            className={styles.addToCart}
+            type="button"
+            onClick={onAddToCart}
+          >
             {product.addToCartLabel}
           </button>
         </div>
