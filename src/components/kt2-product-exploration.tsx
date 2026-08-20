@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useLayoutEffect, useRef, useState } from "react";
 
 import { Kt2ProductInfoPanel } from "@/components/kt2-product-info-panel";
+import { MobileKt2ProductInfoOverlay } from "@/components/mobile-kt2-product-info-overlay";
 import { WyrdFooter } from "@/components/wyrd-footer";
 import { kt2ProductInformation } from "@/data/kt2-product";
 
@@ -132,6 +133,10 @@ export function Kt2ProductExploration({
         <span className={styles.cart}>CART[{cartItemCount}]</span>
       </button>
 
+      <span className={styles.mobileCart} aria-label="Cart, 0 items">
+        CART[0]
+      </span>
+
       <div
         ref={scrollViewportRef}
         className={styles.scrollViewport}
@@ -156,6 +161,7 @@ export function Kt2ProductExploration({
                 width={product.width}
                 height={product.height}
                 sizes="(max-height: 1159px) 60vh, 37vw"
+                priority={product.key === "box" || product.key === "card"}
                 draggable={false}
               />
             </button>
@@ -164,10 +170,18 @@ export function Kt2ProductExploration({
       </div>
 
       {isProductInfoVisible ? (
-        <Kt2ProductInfoPanel
-          product={kt2ProductInformation}
-          onAddToCart={onAddToCart}
-        />
+        <>
+          <div className={styles.desktopInfoPanel}>
+            <Kt2ProductInfoPanel
+              product={kt2ProductInformation}
+              onAddToCart={onAddToCart}
+            />
+          </div>
+          <MobileKt2ProductInfoOverlay
+            product={kt2ProductInformation}
+            onDismiss={() => setIsProductInfoVisible(false)}
+          />
+        </>
       ) : null}
 
       <WyrdFooter />

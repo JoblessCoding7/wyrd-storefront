@@ -2,15 +2,17 @@ import Image from "next/image";
 
 import { WyrdFooter } from "@/components/wyrd-footer";
 
+import styles from "./wyrd-landing.module.css";
+
 type WyrdLandingProps = {
   onEnter: () => void;
 };
 
 export function WyrdLanding({ onEnter }: WyrdLandingProps) {
   return (
-    <main className="relative h-screen w-full overflow-hidden bg-black">
+    <main className={styles.landing}>
       <Image
-        className="object-cover"
+        className={styles.background}
         src="/assets/hero-background.jpg"
         alt=""
         fill
@@ -19,9 +21,9 @@ export function WyrdLanding({ onEnter }: WyrdLandingProps) {
         draggable={false}
       />
 
-      <div className="absolute inset-x-[1.6927vw] top-[3.0198vh] bottom-[8.1967vh]">
+      <div className={styles.logoFrame}>
         <Image
-          className="object-contain"
+          className={`${styles.logo} ${styles.desktopLogo}`}
           src="/assets/wyrd-logo.svg"
           alt="WYRD"
           fill
@@ -29,10 +31,19 @@ export function WyrdLanding({ onEnter }: WyrdLandingProps) {
           priority
           draggable={false}
         />
+        <Image
+          className={`${styles.logo} ${styles.mobileLogo}`}
+          src="/assets/wyrd-logo-mobile.svg"
+          alt="WYRD"
+          fill
+          sizes="(max-width: 768px) calc(100vw - 34px), 0px"
+          priority
+          draggable={false}
+        />
       </div>
 
       <button
-        className="absolute inset-0 z-20 cursor-pointer border-0 bg-transparent"
+        className={styles.enterButton}
         type="button"
         aria-label="Enter the KT2 product experience"
         onClick={onEnter}

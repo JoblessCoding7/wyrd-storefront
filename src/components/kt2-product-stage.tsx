@@ -118,6 +118,10 @@ export function Kt2ProductStage({
         <span className={styles.cart}>CART[{cartItemCount}]</span>
       </button>
 
+      <span className={styles.mobileCart} aria-label="Cart, 0 items">
+        CART[0]
+      </span>
+
       <button
         className={styles.productTrigger}
         type="button"

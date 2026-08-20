@@ -6,6 +6,13 @@
   background: black;
 }
 
+@media (max-width: 768px) {
+  .experience {
+    height: 100svh;
+    height: 100dvh;
+  }
+}
+
 .blackout {
   position: fixed;
   inset: 0;

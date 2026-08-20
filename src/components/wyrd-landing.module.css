@@ -1,0 +1,74 @@
+.landing {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  background: black;
+}
+
+.background {
+  object-fit: cover;
+}
+
+.logoFrame {
+  position: absolute;
+  top: 3.0198vh;
+  right: 1.6927vw;
+  bottom: 8.1967vh;
+  left: 1.6927vw;
+}
+
+.logo {
+  object-fit: contain;
+}
+
+.mobileLogo {
+  display: none;
+}
+
+.enterButton {
+  position: absolute;
+  inset: 0;
+  z-index: 20;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.enterButton:focus-visible {
+  outline: 2px solid white;
+  outline-offset: -8px;
+}
+
+@media (max-width: 768px) {
+  .landing {
+    height: 100svh;
+    height: 100dvh;
+  }
+
+  .background {
+    object-position: center;
+  }
+
+  .logoFrame {
+    top: clamp(18px, 2.4931dvh, 28px);
+    right: clamp(17px, 4.2289vw, 32px);
+    bottom: calc(clamp(64px, 9.4183dvh, 72px) + clamp(16px, 2.2161dvh, 24px));
+    left: clamp(17px, 4.2289vw, 32px);
+  }
+
+  .logo {
+    object-fit: contain;
+  }
+
+  .desktopLogo {
+    display: none;
+  }
+
+  .mobileLogo {
+    display: block;
+  }
+}

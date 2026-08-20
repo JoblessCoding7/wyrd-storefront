@@ -324,3 +324,9 @@
     transition: none;
   }
 }
+
+@media (max-width: 768px) {
+  .layer {
+    display: none;
+  }
+}
