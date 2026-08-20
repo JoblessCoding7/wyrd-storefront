@@ -1,19 +1,10 @@
 @import "tailwindcss";
 
-:root {
-  color-scheme: light dark;
-}
-
+html,
 body {
   margin: 0;
-  background: #fafafa;
-  color: #171717;
-  font-family: Arial, Helvetica, sans-serif;
-}
-
-@media (prefers-color-scheme: dark) {
-  body {
-    background: #0a0a0a;
-    color: #ededed;
-  }
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: black;
 }
