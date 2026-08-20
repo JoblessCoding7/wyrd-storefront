@@ -47,7 +47,17 @@ const productObjects = [
   },
 ] as const;
 
-export function Kt2ProductExploration() {
+type Kt2ProductExplorationProps = {
+  cartItemCount: number;
+  onCartOpen: () => void;
+  onAddToCart: () => void;
+};
+
+export function Kt2ProductExploration({
+  cartItemCount,
+  onCartOpen,
+  onAddToCart,
+}: Kt2ProductExplorationProps) {
   const scrollViewportRef = useRef<HTMLDivElement>(null);
   const [isProductInfoVisible, setIsProductInfoVisible] = useState(false);
 
@@ -113,15 +123,14 @@ export function Kt2ProductExploration() {
         draggable={false}
       />
 
-      <Image
-        className={styles.cart}
-        src="/assets/cart-placeholder.svg"
-        alt="Cart, 0 items"
-        width={76}
-        height={17}
-        priority
-        draggable={false}
-      />
+      <button
+        className={styles.cartTrigger}
+        type="button"
+        aria-label="Open cart"
+        onClick={onCartOpen}
+      >
+        <span className={styles.cart}>CART[{cartItemCount}]</span>
+      </button>
 
       <div
         ref={scrollViewportRef}
@@ -155,7 +164,10 @@ export function Kt2ProductExploration() {
       </div>
 
       {isProductInfoVisible ? (
-        <Kt2ProductInfoPanel product={kt2ProductInformation} />
+        <Kt2ProductInfoPanel
+          product={kt2ProductInformation}
+          onAddToCart={onAddToCart}
+        />
       ) : null}
 
       <WyrdFooter />

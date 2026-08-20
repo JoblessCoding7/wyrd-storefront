@@ -13,10 +13,16 @@ import { WyrdFooter } from "@/components/wyrd-footer";
 import styles from "./kt2-product-stage.module.css";
 
 type Kt2ProductStageProps = {
+  cartItemCount: number;
   onProductActivate: () => void;
+  onCartOpen: () => void;
 };
 
-export function Kt2ProductStage({ onProductActivate }: Kt2ProductStageProps) {
+export function Kt2ProductStage({
+  cartItemCount,
+  onProductActivate,
+  onCartOpen,
+}: Kt2ProductStageProps) {
   const productArtRef = useRef<HTMLDivElement>(null);
   const cursorPromptRef = useRef<HTMLDivElement>(null);
   const animationFrameRef = useRef<number | null>(null);
@@ -103,15 +109,14 @@ export function Kt2ProductStage({ onProductActivate }: Kt2ProductStageProps) {
         draggable={false}
       />
 
-      <Image
-        className={styles.cart}
-        src="/assets/cart-placeholder.svg"
-        alt="Cart, 0 items"
-        width={76}
-        height={17}
-        priority
-        draggable={false}
-      />
+      <button
+        className={styles.cartTrigger}
+        type="button"
+        aria-label="Open cart"
+        onClick={onCartOpen}
+      >
+        <span className={styles.cart}>CART[{cartItemCount}]</span>
+      </button>
 
       <button
         className={styles.productTrigger}
