@@ -70,10 +70,21 @@
   flex: none;
   height: 100%;
   margin: 0;
+  padding: 0;
   align-items: center;
   justify-content: center;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  cursor: pointer;
   scroll-snap-align: center;
   scroll-snap-stop: normal;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.productObject:focus-visible {
+  outline: 1px solid white;
+  outline-offset: -1px;
 }
 
 .box {

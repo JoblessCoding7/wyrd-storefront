@@ -1,9 +1,11 @@
 "use client";
 
 import Image from "next/image";
-import { useLayoutEffect, useRef } from "react";
+import { useLayoutEffect, useRef, useState } from "react";
 
+import { Kt2ProductInfoPanel } from "@/components/kt2-product-info-panel";
 import { WyrdFooter } from "@/components/wyrd-footer";
+import { kt2ProductInformation } from "@/data/kt2-product";
 
 import styles from "./kt2-product-exploration.module.css";
 
@@ -47,6 +49,7 @@ const productObjects = [
 
 export function Kt2ProductExploration() {
   const scrollViewportRef = useRef<HTMLDivElement>(null);
+  const [isProductInfoVisible, setIsProductInfoVisible] = useState(false);
 
   useLayoutEffect(() => {
     const scrollViewport = scrollViewportRef.current;
@@ -129,10 +132,13 @@ export function Kt2ProductExploration() {
       >
         <div className={styles.productTrack}>
           {productObjects.map((product) => (
-            <figure
+            <button
               className={`${styles.productObject} ${styles[product.key]}`}
               key={product.key}
               data-product-object={product.key}
+              type="button"
+              aria-label={`Show ${product.alt} information`}
+              onClick={() => setIsProductInfoVisible(true)}
             >
               <Image
                 className={styles.productArtwork}
@@ -143,10 +149,14 @@ export function Kt2ProductExploration() {
                 sizes="(max-height: 1159px) 60vh, 37vw"
                 draggable={false}
               />
-            </figure>
+            </button>
           ))}
         </div>
       </div>
+
+      {isProductInfoVisible ? (
+        <Kt2ProductInfoPanel product={kt2ProductInformation} />
+      ) : null}
 
       <WyrdFooter />
     </main>
