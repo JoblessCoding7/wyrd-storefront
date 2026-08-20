@@ -1,0 +1,126 @@
+.overlay {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .overlay {
+    --mobile-footer-height: clamp(64px, 9.4183dvh, 72px);
+
+    position: absolute;
+    inset: 0;
+    z-index: 40;
+    display: block;
+    color: black;
+    font-family: "Zalando Sans Expanded", Arial, Helvetica, sans-serif;
+  }
+
+  .backdrop {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: linear-gradient(
+      to bottom,
+      rgb(0 0 0 / 50%) 0,
+      rgb(0 0 0 / 50%) calc(100% - var(--mobile-footer-height)),
+      transparent calc(100% - var(--mobile-footer-height)),
+      transparent 100%
+    );
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .panel {
+    position: absolute;
+    right: clamp(20px, 5.2239vw, 40px);
+    bottom: calc(var(--mobile-footer-height) + clamp(14px, 1.9391dvh, 20px));
+    left: clamp(20px, 5.2239vw, 40px);
+    z-index: 1;
+    display: grid;
+    min-height: clamp(202px, 28.6704dvh, 220px);
+    box-sizing: border-box;
+    grid-template-rows: auto 1fr auto;
+    row-gap: clamp(10px, 1.385dvh, 14px);
+    padding: clamp(13px, 1.9391dvh, 18px) clamp(14px, 3.7313vw, 22px);
+    border: 2px solid black;
+    border-radius: clamp(12px, 3.2338vw, 18px);
+    outline: none;
+    background: white;
+    box-shadow: 0 4px 4px rgb(0 0 0 / 25%);
+  }
+
+  .title,
+  .description,
+  .price {
+    margin: 0;
+  }
+
+  .title {
+    font-size: clamp(15px, 4.2289vw, 24px);
+    font-weight: 900;
+    letter-spacing: -0.04em;
+    line-height: 0.94;
+    text-transform: uppercase;
+    white-space: pre-line;
+  }
+
+  .description {
+    font-size: clamp(10px, 2.7363vw, 15px);
+    font-weight: 500;
+    letter-spacing: -0.015em;
+    line-height: 1.12;
+  }
+
+  .purchaseRow {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .price {
+    font-size: clamp(17px, 4.7264vw, 26px);
+    font-weight: 900;
+    letter-spacing: -0.035em;
+    line-height: 1;
+  }
+
+  .addToCart {
+    min-width: clamp(98px, 26.3682vw, 150px);
+    min-height: 30px;
+    margin: 0;
+    padding: 2px 13px 3px;
+    color: black;
+    border: 2px solid black;
+    border-radius: 999px;
+    background: white;
+    font: inherit;
+    font-size: clamp(11px, 2.9851vw, 16px);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1;
+    cursor: pointer;
+    touch-action: manipulation;
+    transition:
+      color 120ms ease-out,
+      background-color 120ms ease-out;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .addToCart:active {
+    color: white;
+    background: black;
+  }
+
+  .addToCart:focus-visible {
+    outline: 2px solid black;
+    outline-offset: 3px;
+  }
+}
+
+@media (max-width: 768px) and (prefers-reduced-motion: reduce) {
+  .addToCart {
+    transition: none;
+  }
+}

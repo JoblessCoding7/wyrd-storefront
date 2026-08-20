@@ -52,6 +52,10 @@
   outline-offset: 5px;
 }
 
+.mobileCart {
+  display: none;
+}
+
 .productTrigger {
   position: absolute;
   top: 50%;
@@ -121,6 +125,64 @@
   }
 
   .cursorPrompt {
+    transition: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .stage {
+    height: 100svh;
+    height: 100dvh;
+  }
+
+  .background {
+    object-position: center;
+  }
+
+  .logo {
+    top: clamp(18px, 2.9086dvh, 28px);
+    left: clamp(18px, 4.7264vw, 36px);
+    width: clamp(112px, 34.8259vw, 140px);
+  }
+
+  .cartTrigger {
+    display: none;
+  }
+
+  .mobileCart {
+    position: absolute;
+    top: clamp(19px, 2.9086dvh, 29px);
+    right: clamp(18px, 4.7264vw, 36px);
+    z-index: 10;
+    display: block;
+    color: white;
+    font-family: "Zalando Sans Expanded", Arial, Helvetica, sans-serif;
+    font-size: clamp(11px, 2.9851vw, 15px);
+    font-weight: 900;
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+    white-space: nowrap;
+  }
+
+  .productTrigger {
+    top: 48.8%;
+    width: min(70.1493vw, 43.8dvh);
+    cursor: pointer;
+    perspective: none;
+    touch-action: manipulation;
+  }
+
+  .productArt {
+    transform: none !important;
+    transition: none;
+  }
+
+  .cursorPrompt {
+    top: 50%;
+    left: 50%;
+    width: 82%;
+    opacity: 1;
+    transform: translate3d(-50%, -50%, 0) !important;
     transition: none;
   }
 }
