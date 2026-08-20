@@ -327,6 +327,167 @@
 
 @media (max-width: 768px) {
   .layer {
+    --drawer-width: 100%;
+    --footer-height: 0px;
+  }
+
+  .backdrop {
+    inset: 0;
+    width: 100%;
+    opacity: 0;
+    background: rgb(0 0 0 / 42%);
+    backdrop-filter: blur(8px);
+  }
+
+  .footerShield {
     display: none;
+  }
+
+  .drawer {
+    top: auto;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: min(62dvh, 560px);
+    max-height: calc(100dvh - 20px);
+    border-top: 2px solid black;
+    border-left: 0;
+    border-radius: 14px 14px 0 0;
+    transform: translateY(100%);
+    transition: transform 320ms cubic-bezier(0.65, 0, 0.35, 1);
+  }
+
+  .layer[data-open="true"] .drawer {
+    transform: translateY(0);
+  }
+
+  .header {
+    height: 58px;
+    padding: 0 17px;
+    border-bottom-width: 2px;
+  }
+
+  .cartTitle,
+  .close,
+  .productTitle {
+    font-size: 12px;
+    line-height: 14px;
+  }
+
+  .close {
+    min-width: 54px;
+    min-height: 44px;
+  }
+
+  .items {
+    overflow-x: hidden;
+    overflow-y: auto;
+    overscroll-behavior-y: contain;
+  }
+
+  .lineItem {
+    height: 154px;
+    margin: 17px 17px 8px;
+  }
+
+  .productImage {
+    width: 112px;
+  }
+
+  .productTitle {
+    top: 2px;
+    left: 128px;
+    width: calc(100% - 194px);
+  }
+
+  .productPrice {
+    top: 2px;
+    right: 0;
+    width: 62px;
+    font-size: 12px;
+    line-height: 14px;
+  }
+
+  .preorder {
+    top: 43px;
+    left: 128px;
+    font-size: 13px;
+    line-height: 16px;
+  }
+
+  .quantity {
+    top: 88px;
+    left: 128px;
+    width: 98px;
+    height: 34px;
+    border-width: 1.5px;
+  }
+
+  .quantityButton,
+  .quantityValue {
+    font-size: 13px;
+  }
+
+  .quantityButton {
+    min-width: 30px;
+    touch-action: manipulation;
+  }
+
+  .remove {
+    top: 99px;
+    right: 0;
+    min-height: 32px;
+    font-size: 12px;
+    line-height: 14px;
+    touch-action: manipulation;
+  }
+
+  .subtotal {
+    height: 52px;
+    padding: 0 17px;
+    border-top-width: 2px;
+    font-size: 12px;
+    line-height: 14px;
+  }
+
+  .subtotalValue {
+    font-size: 18px;
+    line-height: 22px;
+  }
+
+  .checkoutArea {
+    height: 82px;
+    padding: 14px 17px 0;
+    border-top-width: 2px;
+  }
+
+  .checkout {
+    height: 48px;
+    border-width: 2px;
+    font-size: 14px;
+    line-height: 17px;
+    touch-action: manipulation;
+  }
+
+  .close:focus-visible,
+  .quantityButton:focus-visible,
+  .remove:focus-visible,
+  .checkout:focus-visible {
+    outline-width: 2px;
+    outline-offset: 3px;
+  }
+
+  .checkout:focus-visible {
+    outline-offset: -4px;
+  }
+}
+
+@media (max-width: 768px) and (prefers-reduced-motion: reduce) {
+  .backdrop,
+  .drawer,
+  .quantityButton,
+  .checkout {
+    transition: none;
   }
 }

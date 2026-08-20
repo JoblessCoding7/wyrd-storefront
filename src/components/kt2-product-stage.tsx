@@ -118,10 +118,6 @@ export function Kt2ProductStage({
         <span className={styles.cart}>CART[{cartItemCount}]</span>
       </button>
 
-      <span className={styles.mobileCart} aria-label="Cart, 0 items">
-        CART[0]
-      </span>
-
       <button
         className={styles.productTrigger}
         type="button"
@@ -153,11 +149,20 @@ export function Kt2ProductStage({
           aria-hidden="true"
         >
           <Image
-            className={styles.cursorPromptImage}
+            className={`${styles.cursorPromptImage} ${styles.desktopPromptImage}`}
             src="/assets/kt2-hover-prompt.svg"
             alt=""
             width={449}
             height={46}
+            draggable={false}
+          />
+          <Image
+            className={`${styles.cursorPromptImage} ${styles.mobilePromptImage}`}
+            src="/assets/kt2-hover-prompt-mobile.svg"
+            alt=""
+            width={352}
+            height={37}
+            priority
             draggable={false}
           />
         </div>

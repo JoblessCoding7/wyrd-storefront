@@ -133,10 +133,6 @@ export function Kt2ProductExploration({
         <span className={styles.cart}>CART[{cartItemCount}]</span>
       </button>
 
-      <span className={styles.mobileCart} aria-label="Cart, 0 items">
-        CART[0]
-      </span>
-
       <div
         ref={scrollViewportRef}
         className={styles.scrollViewport}
@@ -180,6 +176,7 @@ export function Kt2ProductExploration({
           <MobileKt2ProductInfoOverlay
             product={kt2ProductInformation}
             onDismiss={() => setIsProductInfoVisible(false)}
+            onAddToCart={onAddToCart}
           />
         </>
       ) : null}
